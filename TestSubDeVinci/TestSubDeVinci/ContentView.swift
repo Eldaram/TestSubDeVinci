@@ -67,22 +67,30 @@ struct ContentView: View {
         }
     }
     
-    @State private var selected = 1
+    @State private var selected: possibleAnswers = .one
     @State private var questionNum = 0
     
     var studentQuestions: some View {
         VStack {
             Text("Question \(questionNum + 1)/\(Model.questions.count)")
+            Text("Note \(logInModel.grade)/\(Model.questions.count)")
             Form {
                 Text(Model.questions[questionNum].statement)
                 Picker(selection: $selected, label: Text("Réponse")) {
-                    Text(Model.questions[questionNum].proposal[0]).tag(1)
-                    Text(Model.questions[questionNum].proposal[1]).tag(2)
-                    Text(Model.questions[questionNum].proposal[2]).tag(3)
+                    Text(Model.questions[questionNum].proposal[0]).tag(possibleAnswers.one)
+                    Text(Model.questions[questionNum].proposal[1]).tag(possibleAnswers.two)
+                    Text(Model.questions[questionNum].proposal[2]).tag(possibleAnswers.three)
                 }
                 Button ("Suivant") {
-                    questionNum += 1
-                    selected = 1
+                    
+                    logInModel.grade += Model.questions[questionNum].answer == selected ? 1 : 0
+                    selected = possibleAnswers.one
+                    if (questionNum + 1 < Model.questions.count) {
+                        questionNum += 1
+                    }
+                    else {
+                        // TODO, save the questions
+                    }
                 }
             }
         }

@@ -12,6 +12,7 @@ class LogInModel: ObservableObject {
     
     @Published var username: String = "Eldaram"
     @Published var password: String = "12345ABC"
+    @Published var grade: Int16 = 0
     
     @Published var user: User? = nil
     @Published var connected: Bool = false
@@ -38,6 +39,7 @@ class LogInModel: ObservableObject {
     func logoutUser() {
         user = nil
         connected = false
+        grade = 0
     }
     
     func isUserAdmin() -> Bool {
