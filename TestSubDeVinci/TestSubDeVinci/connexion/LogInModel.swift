@@ -29,6 +29,10 @@ class LogInModel: ObservableObject {
         if (user != nil) {
             connected = true
         }
+        else {
+            isAlert = true
+            errorMessage = Errors.wrongCredentials.errorDescription!
+        }
     }
     
     func logoutUser() {

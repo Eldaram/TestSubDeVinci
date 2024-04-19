@@ -30,6 +30,11 @@ class SignUpModel: ObservableObject {
             errorMessage = Errors.noMatch.errorDescription!
             return
         }
+        guard storageModel.findUser(username: username) == nil else {
+            isAlert = true
+            errorMessage = Errors.usernameExist.errorDescription!
+            return
+        }
         storageModel.saveUser(username: username, firstName: firstName, lastName: lastName, password: password, isAdmin: isAdmin)
     }
 }

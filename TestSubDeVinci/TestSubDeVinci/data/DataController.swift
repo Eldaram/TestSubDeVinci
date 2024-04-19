@@ -46,8 +46,7 @@ class DataController: ObservableObject {
     }
     
     func logIn(username: String, password: String) -> User?{
-        let userList: [User] = getAllUsers()
-        guard let user: User = userList.first(where: {(user:User) in user.username == username}) else {
+        guard let user: User = findUser(username: username) else {
             print("No user named \(username)")
             return nil
         }
@@ -59,6 +58,10 @@ class DataController: ObservableObject {
         
         print("Wrong password, right is \(user.password ?? "ERROR")")
         return nil
+    }
+    
+    func findUser(username: String) -> User? {
+        return getAllUsers().first(where: {(user:User) in user.username == username})
     }
     
     /*

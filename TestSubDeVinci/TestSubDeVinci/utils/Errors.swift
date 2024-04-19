@@ -19,6 +19,8 @@ enum Errors: String, LocalizedError {
     case strangeCaracters = "Strange Caracters"
     case noConnection = "No internet connection"
     case noMatch = "Strings don't match"
+    case wrongCredentials = "Credentials doesn't work..."
+    case usernameExist = "Username already exist"
     
     var errorDescription: String? {
         switch self {
@@ -44,6 +46,10 @@ enum Errors: String, LocalizedError {
                 return "Assurez-vous d'avoir une connexion internet pour enregister de nouveaux appareils"
             case .noMatch:
                 return "Les valeurs entrés ne conresspondent pas"
+            case .wrongCredentials:
+                return "Le mot de passe ou le nom d'utilisteurs n'existent pas."
+            case .usernameExist:
+                return "Ce nom d'utilisateur existe déjà."
         }
     }
     var failureReason: String? {
@@ -69,6 +75,10 @@ enum Errors: String, LocalizedError {
                 return "Pas de connexion"
             case .noMatch: 
                 return "Ne correspond pas"
+            case .wrongCredentials:
+                return "Mauvais identifiants."
+        case .usernameExist:
+            return "Utilisateur déjà existant"
         }
     }
 }
