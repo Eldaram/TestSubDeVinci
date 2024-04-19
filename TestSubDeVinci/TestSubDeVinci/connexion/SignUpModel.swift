@@ -36,5 +36,10 @@ class SignUpModel: ObservableObject {
             return
         }
         storageModel.saveUser(username: username, firstName: firstName, lastName: lastName, password: password, isAdmin: isAdmin)
+        username = ""
+        firstName = ""
+        lastName = ""
+        password = ""
+        passwordValidation = ""
     }
 }
