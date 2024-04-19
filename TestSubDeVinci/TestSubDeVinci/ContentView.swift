@@ -19,8 +19,13 @@ struct ContentView: View {
                     userList
                 }
                 else {
-                    Text("Questionaire")
-                    studentQuestions
+                    if (logInModel.testPassed) {
+                        studentResults
+                    }
+                    else {
+                        Text("Questionaire")
+                        studentQuestions
+                    }
                 }
                 Button("Déconnexion") {
                     logInModel.logoutUser()
@@ -63,7 +68,7 @@ struct ContentView: View {
     
     var userList: some View {
         List (logInModel.getAllStudents(), id: \.id) { user in
-            Text("\(Utils.extractString(str: user.firstName)) \(Utils.extractString(str: user.lastName)) \(Utils.extractInt16(num: user.grade))")
+            Text("\(Utils.extractString(str: user.firstName)) \(Utils.extractString(str: user.lastName)) - \(user.passed ? Utils.extractInt(num: user.grade) : "Non noté")")
         }
     }
     
@@ -89,10 +94,18 @@ struct ContentView: View {
                         questionNum += 1
                     }
                     else {
-                        // TODO, save the questions
+                        logInModel.saveGrade()
                     }
                 }
             }
+        }
+    }
+    
+    var studentResults: some View {
+        VStack {
+            Text("Bravo ! Vous avez complété le quesitionaire")
+            Text(logInModel.username)
+            Text("\(logInModel.user?.grade ?? 0)/10")
         }
     }
 }

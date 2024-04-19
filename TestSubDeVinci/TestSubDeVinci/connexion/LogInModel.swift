@@ -16,6 +16,7 @@ class LogInModel: ObservableObject {
     
     @Published var user: User? = nil
     @Published var connected: Bool = false
+    @Published var testPassed: Bool = false
     
     @Published var isAlert: Bool = false
     @Published var errorMessage: String = ""
@@ -27,19 +28,21 @@ class LogInModel: ObservableObject {
             return
         }
         user = storageModel.logIn(username: username, password: password)
-        if (user != nil) {
-            connected = true
-        }
-        else {
+        guard let _user: User = user else {
             isAlert = true
             errorMessage = Errors.wrongCredentials.errorDescription!
+            return
         }
+        testPassed = _user.passed
+        connected = true
+        
     }
     
     func logoutUser() {
         user = nil
         connected = false
         grade = 0
+        testPassed = false
     }
     
     func isUserAdmin() -> Bool {
@@ -51,5 +54,10 @@ class LogInModel: ObservableObject {
     
     func getAllStudents() -> [User] {
         return storageModel.getAllStudents()
+    }
+    
+    func saveGrade() {
+        storageModel.saveGrade(username: username, grade: grade)
+        testPassed = true
     }
 }

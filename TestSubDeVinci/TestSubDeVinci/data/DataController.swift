@@ -37,6 +37,8 @@ class DataController: ObservableObject {
         registeredUser.lastName = lastName
         registeredUser.password = password
         registeredUser.isAdmin = isAdmin
+        registeredUser.passed = false
+        registeredUser.grade = 0
         
         
         do {
@@ -88,5 +90,19 @@ class DataController: ObservableObject {
     
     func getAllStudents() -> [User] {
         return getAllUsers().filter({user in !user.isAdmin})
+    }
+    
+    func saveGrade(username: String, grade: Int16) {
+        guard let user: User = findUser(username: username) else {
+            return
+        }
+        user.grade = grade
+        user.passed = true
+        do {
+            try viewContext.save()
+            print("Saved !")
+        } catch {
+            print("Je n'ai pas réussi à sauvegarder les données: \(error)")
+        }
     }
 }

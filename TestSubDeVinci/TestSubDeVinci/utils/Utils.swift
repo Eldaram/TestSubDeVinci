@@ -15,10 +15,10 @@ class Utils {
         return _str
     }
     
-    static func extractInt16(num: Int16?) -> Int16 {
+    static func extractInt(num: Int16?) -> String {
         guard let _num: Int16 = num else {
-            return 0
+            return "Non noté"
         }
-        return _num
+        return String(_num)
     }
 }
