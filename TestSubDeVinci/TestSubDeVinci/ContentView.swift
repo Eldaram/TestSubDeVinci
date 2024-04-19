@@ -28,10 +28,10 @@ struct ContentView: View {
                             studentQuestions
                         }
                     }
-                    Button("Déconnexion") {
+                    CustomButton(action: {
                         logInModel.logoutUser()
                         questionNum = 0
-                    }
+                    }, str: "Déconnexion")
                 }
             }
             else {
@@ -77,8 +77,7 @@ struct ContentView: View {
                     Text(Model.questions[questionNum].proposal[1]).tag(possibleAnswers.two)
                     Text(Model.questions[questionNum].proposal[2]).tag(possibleAnswers.three)
                 }
-                Button ("Suivant") {
-                    
+                CustomButton(action: {
                     logInModel.grade += Model.questions[questionNum].answer == selected ? 1 : 0
                     selected = possibleAnswers.one
                     if (questionNum + 1 < Model.questions.count) {
@@ -87,7 +86,7 @@ struct ContentView: View {
                     else {
                         logInModel.saveGrade()
                     }
-                }
+                }, str: "Suivant")
             }
         }
     }
