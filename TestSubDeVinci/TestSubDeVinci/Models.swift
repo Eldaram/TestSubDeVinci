@@ -8,7 +8,7 @@
 import Foundation
 
 class Model {
-    let questions: [Question] = [
+    static let questions: [Question] = [
         Question(
             statement: "Sur quel environnement peut-on utiliser XCode ?" ,
             proposal: [

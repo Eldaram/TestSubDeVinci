@@ -13,7 +13,13 @@ struct ContentView: View {
     
     var body: some View {
         if logInModel.connected {
-            Text("logged")
+            if (logInModel.isUserAdmin()) {
+                Text("Grades")
+                userList
+            }
+            else {
+                Text("logged")
+            }
         }
         else {
             logView
@@ -46,6 +52,17 @@ struct ContentView: View {
         .padding()
         .alert(logInModel.errorMessage, isPresented: $logInModel.isAlert) { }
         .alert(signUpModel.errorMessage, isPresented: $signUpModel.isAlert) { }
+    }
+    
+    var userList: some View {
+        VStack {
+            List (logInModel.getAllStudents(), id: \.id) { user in
+                Text("\(Utils.extractString(str: user.firstName)) \(Utils.extractString(str: user.lastName)) \(Utils.extractInt16(num: user.grade))")
+            }
+            Button("Déconnexion") {
+                logInModel.logoutUser()
+            }
+        }
     }
 }
 

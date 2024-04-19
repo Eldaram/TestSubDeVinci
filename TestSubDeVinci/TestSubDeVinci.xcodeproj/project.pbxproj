@@ -12,6 +12,7 @@
 		3A1C52AE2BD25ABD002502B5 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1C52AD2BD25ABD002502B5 /* SignUpModel.swift */; };
 		3A1C52B12BD25DC6002502B5 /* Users.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3A1C52AF2BD25DC6002502B5 /* Users.xcdatamodeld */; };
 		3A1C52B42BD25E42002502B5 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1C52B32BD25E42002502B5 /* DataController.swift */; };
+		3A1C52C12BD2969C002502B5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1C52C02BD2969C002502B5 /* Utils.swift */; };
 		F0409D092BD19A0F007FDC4B /* TestSubDeVinciTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0409D082BD19A0F007FDC4B /* TestSubDeVinciTests.swift */; };
 		F0D2B5562BCEF3F800BDD55F /* TestSubDeVinciApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2B5552BCEF3F800BDD55F /* TestSubDeVinciApp.swift */; };
 		F0D2B5582BCEF3F800BDD55F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2B5572BCEF3F800BDD55F /* ContentView.swift */; };
@@ -36,6 +37,7 @@
 		3A1C52AD2BD25ABD002502B5 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		3A1C52B02BD25DC6002502B5 /* Users.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Users.xcdatamodel; sourceTree = "<group>"; };
 		3A1C52B32BD25E42002502B5 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		3A1C52C02BD2969C002502B5 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		F0409D062BD19A0F007FDC4B /* TestSubDeVinciTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestSubDeVinciTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0409D082BD19A0F007FDC4B /* TestSubDeVinciTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSubDeVinciTests.swift; sourceTree = "<group>"; };
 		F0D2B5522BCEF3F800BDD55F /* TestSubDeVinci.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestSubDeVinci.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				3A1C52A72BD25739002502B5 /* Errors.swift */,
+				3A1C52C02BD2969C002502B5 /* Utils.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 			files = (
 				3A1C52AE2BD25ABD002502B5 /* SignUpModel.swift in Sources */,
 				F0D2B5642BCEF41900BDD55F /* Models.swift in Sources */,
+				3A1C52C12BD2969C002502B5 /* Utils.swift in Sources */,
 				F0D2B5582BCEF3F800BDD55F /* ContentView.swift in Sources */,
 				3A1C52B42BD25E42002502B5 /* DataController.swift in Sources */,
 				3A1C52B12BD25DC6002502B5 /* Users.xcdatamodeld in Sources */,

@@ -10,8 +10,8 @@ import Foundation
 class LogInModel: ObservableObject {
     var storageModel = DataController.shared
     
-    @Published var username: String = ""
-    @Published var password: String = ""
+    @Published var username: String = "JMartin"
+    @Published var password: String = "12345ABC"
     
     @Published var user: User? = nil
     @Published var connected: Bool = false
@@ -38,5 +38,16 @@ class LogInModel: ObservableObject {
     func logoutUser() {
         user = nil
         connected = false
+    }
+    
+    func isUserAdmin() -> Bool {
+        guard let _user: User = user else {
+            return false
+        }
+        return _user.isAdmin
+    }
+    
+    func getAllStudents() -> [User] {
+        return storageModel.getAllStudents()
     }
 }

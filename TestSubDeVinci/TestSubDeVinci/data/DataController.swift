@@ -10,7 +10,7 @@ import Foundation
 
 class DataController: ObservableObject {
     static var shared = DataController()
-        
+    
     let container = NSPersistentContainer(name: "Users")
     
     var viewContext: NSManagedObjectContext {
@@ -23,8 +23,10 @@ class DataController: ObservableObject {
                 print("Core Data failed to load: \(error.localizedDescription)")
             }
         }
-        saveUser(username: "JMartin", firstName: "Jean", lastName: "Martin", password: "12345ABC", isAdmin: true)
-        saveUser(username: "MDupont", firstName: "Marie", lastName: "Dupont", password: "J@imeLesM0tsDeP@sseDifficiles", isAdmin: true)
+        if (findUser(username: "JMartin") == nil) {
+            saveUser(username: "JMartin", firstName: "Jean", lastName: "Martin", password: "12345ABC", isAdmin: true)
+            saveUser(username: "MDupont", firstName: "Marie", lastName: "Dupont", password: "J@imeLesM0tsDeP@sseDifficiles", isAdmin: true)
+        }
     }
     
     func saveUser(username: String, firstName: String, lastName: String, password: String, isAdmin: Bool) {
@@ -82,5 +84,9 @@ class DataController: ObservableObject {
         } catch {
             return []
         }
+    }
+    
+    func getAllStudents() -> [User] {
+        return getAllUsers().filter({user in !user.isAdmin})
     }
 }
