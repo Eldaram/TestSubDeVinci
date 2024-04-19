@@ -12,68 +12,49 @@ struct ContentView: View {
     @StateObject var signUpModel: SignUpModel = SignUpModel()
     
     var body: some View {
-        if logInModel.connected {
-            VStack {
-                if (logInModel.isUserAdmin()) {
-                    Text("Notes")
-                    userList
-                }
-                else {
-                    if (logInModel.testPassed) {
-                        studentResults
+        NavigationStack {
+            if logInModel.connected {
+                VStack {
+                    if (logInModel.isUserAdmin()) {
+                        Text("Notes")
+                        userList
                     }
                     else {
-                        Text("Questionaire")
-                        studentQuestions
+                        if (logInModel.testPassed) {
+                            studentResults
+                        }
+                        else {
+                            Text("Questionaire")
+                            studentQuestions
+                        }
+                    }
+                    Button("Déconnexion") {
+                        logInModel.logoutUser()
+                        questionNum = 0
                     }
                 }
-                Button("Déconnexion") {
-                    logInModel.logoutUser()
-                    questionNum = 0
-                }
             }
-        }
-        else {
-            logView
+            else {
+                logView
+            }
         }
     }
     
     var logView: some View {
         VStack {
             Form {
-                Text("Connexion")
                 TextField("Pseudonyme", text: $logInModel.username) { }
                 SecureField("Mot de passe", text: $logInModel.password) { }
             }.scrollContentBackground(.hidden)
-            Button (action:logInModel.loginUser) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
-                        .fill(LinearGradient(colors: [.blue, .purple, .blue], startPoint: .bottomLeading, endPoint: .topTrailing))
-                        .frame(width: 300, height: 40)
-                    Text("Me connecter").foregroundStyle(.white)
-                }
+            CustomButton(action: logInModel.loginUser, str: "Connexion")
+            NavigationLink(destination: SignUpView()) {
+                CustomNavRectangle(str: "Créer un compte")
             }
-            Divider()
-            Form {
-                Text("Créer un compte")
-                TextField("Pseudonyme", text: $signUpModel.username) { }
-                TextField("Prénom", text: $signUpModel.firstName) { }
-                TextField("Nom de famille", text: $signUpModel.lastName) { }
-                SecureField("Mot de passe", text: $signUpModel.password) { }
-                SecureField("Confirmer le mot de passe", text: $signUpModel.passwordValidation) { }
-            }.scrollContentBackground(.hidden)
-            Button (action: {signUpModel.saveUser(isAdmin: false)}) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
-                        .fill(LinearGradient(colors: [.blue, .purple, .blue], startPoint: .bottomLeading, endPoint: .topTrailing))
-                        .frame(width: 300, height: 40)
-                    Text("Créer mon compte").foregroundStyle(.white)
-                }
-            }
+            
         }
         .padding()
         .alert(logInModel.errorMessage, isPresented: $logInModel.isAlert) { }
-        .alert(signUpModel.errorMessage, isPresented: $signUpModel.isAlert) { }
+        .navigationTitle("Connexion")
     }
     
     var userList: some View {

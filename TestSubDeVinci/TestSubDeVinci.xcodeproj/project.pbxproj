@@ -13,6 +13,9 @@
 		3A1C52B12BD25DC6002502B5 /* Users.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3A1C52AF2BD25DC6002502B5 /* Users.xcdatamodeld */; };
 		3A1C52B42BD25E42002502B5 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1C52B32BD25E42002502B5 /* DataController.swift */; };
 		3A1C52C12BD2969C002502B5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1C52C02BD2969C002502B5 /* Utils.swift */; };
+		3A1C52C32BD2B215002502B5 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1C52C22BD2B215002502B5 /* SignUpView.swift */; };
+		3A1C52C72BD2B32E002502B5 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1C52C62BD2B32E002502B5 /* CustomButton.swift */; };
+		3A1C52C92BD2B636002502B5 /* CustomNavLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1C52C82BD2B636002502B5 /* CustomNavLink.swift */; };
 		F0409D092BD19A0F007FDC4B /* TestSubDeVinciTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0409D082BD19A0F007FDC4B /* TestSubDeVinciTests.swift */; };
 		F0D2B5562BCEF3F800BDD55F /* TestSubDeVinciApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2B5552BCEF3F800BDD55F /* TestSubDeVinciApp.swift */; };
 		F0D2B5582BCEF3F800BDD55F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2B5572BCEF3F800BDD55F /* ContentView.swift */; };
@@ -38,6 +41,9 @@
 		3A1C52B02BD25DC6002502B5 /* Users.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Users.xcdatamodel; sourceTree = "<group>"; };
 		3A1C52B32BD25E42002502B5 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		3A1C52C02BD2969C002502B5 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		3A1C52C22BD2B215002502B5 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		3A1C52C62BD2B32E002502B5 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		3A1C52C82BD2B636002502B5 /* CustomNavLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavLink.swift; sourceTree = "<group>"; };
 		F0409D062BD19A0F007FDC4B /* TestSubDeVinciTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestSubDeVinciTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0409D082BD19A0F007FDC4B /* TestSubDeVinciTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSubDeVinciTests.swift; sourceTree = "<group>"; };
 		F0D2B5522BCEF3F800BDD55F /* TestSubDeVinci.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestSubDeVinci.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,7 +85,6 @@
 			isa = PBXGroup;
 			children = (
 				3A1C52AB2BD258CC002502B5 /* LogInModel.swift */,
-				3A1C52AD2BD25ABD002502B5 /* SignUpModel.swift */,
 			);
 			path = connexion;
 			sourceTree = "<group>";
@@ -91,6 +96,24 @@
 				3A1C52AF2BD25DC6002502B5 /* Users.xcdatamodeld */,
 			);
 			path = data;
+			sourceTree = "<group>";
+		};
+		3A1C52C42BD2B221002502B5 /* signUp */ = {
+			isa = PBXGroup;
+			children = (
+				3A1C52C22BD2B215002502B5 /* SignUpView.swift */,
+				3A1C52AD2BD25ABD002502B5 /* SignUpModel.swift */,
+			);
+			path = signUp;
+			sourceTree = "<group>";
+		};
+		3A1C52C52BD2B312002502B5 /* components */ = {
+			isa = PBXGroup;
+			children = (
+				3A1C52C62BD2B32E002502B5 /* CustomButton.swift */,
+				3A1C52C82BD2B636002502B5 /* CustomNavLink.swift */,
+			);
+			path = components;
 			sourceTree = "<group>";
 		};
 		F0409D072BD19A0F007FDC4B /* TestSubDeVinciTests */ = {
@@ -122,6 +145,8 @@
 		F0D2B5542BCEF3F800BDD55F /* TestSubDeVinci */ = {
 			isa = PBXGroup;
 			children = (
+				3A1C52C52BD2B312002502B5 /* components */,
+				3A1C52C42BD2B221002502B5 /* signUp */,
 				3A1C52B22BD25E33002502B5 /* data */,
 				3A1C52AA2BD2589C002502B5 /* connexion */,
 				3A1C52A92BD25746002502B5 /* utils */,
@@ -251,10 +276,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A1C52AE2BD25ABD002502B5 /* SignUpModel.swift in Sources */,
+				3A1C52C72BD2B32E002502B5 /* CustomButton.swift in Sources */,
 				F0D2B5642BCEF41900BDD55F /* Models.swift in Sources */,
 				3A1C52C12BD2969C002502B5 /* Utils.swift in Sources */,
+				3A1C52C92BD2B636002502B5 /* CustomNavLink.swift in Sources */,
 				F0D2B5582BCEF3F800BDD55F /* ContentView.swift in Sources */,
 				3A1C52B42BD25E42002502B5 /* DataController.swift in Sources */,
+				3A1C52C32BD2B215002502B5 /* SignUpView.swift in Sources */,
 				3A1C52B12BD25DC6002502B5 /* Users.xcdatamodeld in Sources */,
 				3A1C52AC2BD258CC002502B5 /* LogInModel.swift in Sources */,
 				3A1C52A82BD25739002502B5 /* Errors.swift in Sources */,
