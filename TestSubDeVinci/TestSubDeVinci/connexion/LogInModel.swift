@@ -10,7 +10,7 @@ import Foundation
 class LogInModel: ObservableObject {
     var storageModel = DataController.shared
     
-    @Published var username: String = "JMartin"
+    @Published var username: String = "Eldaram"
     @Published var password: String = "12345ABC"
     
     @Published var user: User? = nil

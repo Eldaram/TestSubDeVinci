@@ -13,12 +13,19 @@ struct ContentView: View {
     
     var body: some View {
         if logInModel.connected {
-            if (logInModel.isUserAdmin()) {
-                Text("Grades")
-                userList
-            }
-            else {
-                Text("logged")
+            VStack {
+                if (logInModel.isUserAdmin()) {
+                    Text("Notes")
+                    userList
+                }
+                else {
+                    Text("Questionaire")
+                    studentQuestions
+                }
+                Button("Déconnexion") {
+                    logInModel.logoutUser()
+                    questionNum = 0
+                }
             }
         }
         else {
@@ -32,7 +39,7 @@ struct ContentView: View {
                 Text("Connexion")
                 TextField("Pseudonyme", text: $logInModel.username) { }
                 SecureField("Mot de passe", text: $logInModel.password) { }
-                Button("Me connecter") { 
+                Button("Me connecter") {
                     logInModel.loginUser()
                 }
             }
@@ -44,7 +51,7 @@ struct ContentView: View {
                 TextField("Nom de famille", text: $signUpModel.lastName) { }
                 SecureField("Mot de passe", text: $signUpModel.password) { }
                 SecureField("Confirmer le mot de passe", text: $signUpModel.passwordValidation) { }
-                Button("Créer mon compte") { 
+                Button("Créer mon compte") {
                     signUpModel.saveUser(isAdmin: false)
                 }
             }
@@ -55,12 +62,28 @@ struct ContentView: View {
     }
     
     var userList: some View {
+        List (logInModel.getAllStudents(), id: \.id) { user in
+            Text("\(Utils.extractString(str: user.firstName)) \(Utils.extractString(str: user.lastName)) \(Utils.extractInt16(num: user.grade))")
+        }
+    }
+    
+    @State private var selected = 1
+    @State private var questionNum = 0
+    
+    var studentQuestions: some View {
         VStack {
-            List (logInModel.getAllStudents(), id: \.id) { user in
-                Text("\(Utils.extractString(str: user.firstName)) \(Utils.extractString(str: user.lastName)) \(Utils.extractInt16(num: user.grade))")
-            }
-            Button("Déconnexion") {
-                logInModel.logoutUser()
+            Text("Question \(questionNum + 1)/\(Model.questions.count)")
+            Form {
+                Text(Model.questions[questionNum].statement)
+                Picker(selection: $selected, label: Text("Réponse")) {
+                    Text(Model.questions[questionNum].proposal[0]).tag(1)
+                    Text(Model.questions[questionNum].proposal[1]).tag(2)
+                    Text(Model.questions[questionNum].proposal[2]).tag(3)
+                }
+                Button ("Suivant") {
+                    questionNum += 1
+                    selected = 1
+                }
             }
         }
     }
