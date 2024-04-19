@@ -8,14 +8,14 @@
 import Foundation
 
 // C'est ici pour l'exemple. Les utilisateurs seront à ajouter au CoreData
-class Users {
-    var all:[User] = [
-        User(pseudo: "JMartin", firstName: "Jean", familyName: "Martin", isAdmin: true, password: "12345ABC"),
-        User(pseudo: "MDupont", firstName: "Marie", familyName: "Dupont", isAdmin: true, password: "J@imeLesM0tsDeP@sseDifficiles")
+class UsersOLD {
+    var all:[UserOLD] = [
+        UserOLD(pseudo: "JMartin", firstName: "Jean", familyName: "Martin", isAdmin: true, password: "12345ABC"),
+        UserOLD(pseudo: "MDupont", firstName: "Marie", familyName: "Dupont", isAdmin: true, password: "J@imeLesM0tsDeP@sseDifficiles")
     ]
 }
 
-struct User {
+struct UserOLD {
     let id = UUID()
     let pseudo: String
     let firstName: String
